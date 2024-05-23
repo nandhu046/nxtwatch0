@@ -14,6 +14,7 @@ export const MenuItem = styled.li`
   padding-left: 22px;
   padding-right: 22px;
   border-radius: 40px;
+  margin-bottom: 6px;
   @media screen and (min-width: 768px) {
     width: 100%;
     margin-bottom: 2px;

@@ -90,7 +90,7 @@ export const LogOutBtn = styled.button`
     }
 `
 
-export const Alert = styled.div`
+export const PopupContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: center;
@@ -152,4 +152,16 @@ export const LogoutChoice = styled.button`
   text-align: center;
   width: 80px;
   cursor: pointer;
+`
+
+export const MenuContent = styled.div`
+  background-color: ${props => props.bgColor};
+  padding-top: 23px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  width: 100%;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  font-family: 'Roboto';
 `

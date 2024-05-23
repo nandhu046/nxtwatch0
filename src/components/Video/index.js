@@ -9,8 +9,10 @@ import {
   VideoInfo,
   Title,
   VideoStats,
+  PublishedAndViews,
   LinkComponent,
-  Break,
+  Span0,
+  PublishedAndViews0,
   Span,
 } from './StyledComponents'
 
@@ -34,12 +36,15 @@ const Video = props => {
     title,
     viewCount,
   } = newDataObj
-  const pubDate = publishedAt.split(',')
-  const monthDay = pubDate[0].split(' ')
-  const date = new Date(`${monthDay[0]} ${monthDay[1]} ${pubDate[1]}`)
-  const fromPublishedDateToNow = formatDistanceToNow(
-    new Date(date.getFullYear(), date.getMonth(), date.getDay()),
-  )
+
+  let postedDate = formatDistanceToNow(new Date(publishedAt))
+  const postedDateList = postedDate.split(' ')
+
+  if (postedDateList.length === 3) {
+    postedDateList.shift()
+    postedDate = postedDateList.join(' ')
+  }
+
   const {location} = props
   const path = location.pathname
 
@@ -62,7 +67,7 @@ const Video = props => {
                 <Profile
                   dH={path !== '/' ? 'none' : 'inline-block'}
                   src={profileImageUrl}
-                  alt={name}
+                  alt="channel logo"
                 />
                 <VideoInfo space={path !== '/' ? '18px' : '0px'}>
                   <Title
@@ -72,9 +77,11 @@ const Video = props => {
                     {title}
                   </Title>
                   <VideoStats>
-                    {name}
-                    <Break />
-                    <Span> .</Span> {viewCount} . {fromPublishedDateToNow}
+                    <PublishedAndViews0>{name}</PublishedAndViews0>
+                    <Span0>.</Span0>
+                    <PublishedAndViews>{viewCount} views</PublishedAndViews>
+                    <Span>.</Span>
+                    <PublishedAndViews>{postedDate} ago</PublishedAndViews>
                   </VideoStats>
                 </VideoInfo>
               </ChannelVideoDetails>

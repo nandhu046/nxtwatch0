@@ -9,7 +9,7 @@ export const HomeContainer = styled.div`
 export const MainContainer = styled.div`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 90vh;
   @media screen and (min-width: 768px) {
     flex-direction: row;
   }
@@ -37,13 +37,16 @@ export const VideosContainer = styled.ul`
   flex-direction: row;
   width: 100%;
   height: 100%;
-  padding-left: 12px;
+  padding-left: 0px;
   flex-wrap: wrap;
   margin: 0px;
+  @media screen and (min-width: 576px) {
+    padding-left: 12px;
+  }
   @media screen and (min-width: 768px) {
-    padding-left: 35px;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-left: 25px;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 `
 

@@ -76,12 +76,20 @@ export const Title = styled.p`
   }
 `
 
-export const VideoStats = styled.p`
+export const VideoStats = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+`
+
+export const PublishedAndViews = styled.p`
   margin-top: 6px;
   font-size: 12px;
   color: #64748b;
   font-weight: 500;
   line-height: 1.3;
+  margin-bottom: 0px;
   @media screen and (min-width: 576px) {
     line-height: 1.7;
     margin-top: 2px;
@@ -121,8 +129,29 @@ export const Break = styled.br`
     display: flex;
   }
 `
-export const Span = styled.span`
-  display: inline-block;
+export const Span = styled.p`
+  margin-top: 6px;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: bold;
+  line-height: 1.3;
+  margin-left: 5px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  @media screen and (min-width: 576px) {
+    font-size: 13px;
+  }
+`
+
+export const PublishedAndViews0 = styled(PublishedAndViews)`
+  @media screen and (min-width: 576px) {
+    width: 100%;
+    margin-bottom: 0px;
+  }
+`
+
+export const Span0 = styled(Span)`
+  margin-bottom: 5px;
   @media screen and (min-width: 576px) {
     display: none;
   }

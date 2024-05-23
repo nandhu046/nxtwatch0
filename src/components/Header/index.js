@@ -4,6 +4,8 @@ import Popup from 'reactjs-popup'
 import {FaMoon} from 'react-icons/fa'
 import {FiSun, FiLogOut} from 'react-icons/fi'
 import {GiHamburgerMenu} from 'react-icons/gi'
+import TabOption from '../TabOption'
+import FooterSection from '../FooterSection'
 import Context from '../../context'
 
 import {
@@ -14,18 +16,26 @@ import {
   ProfileImg,
   IconButton1,
   LogOutBtn,
-  Alert,
   PopupContent,
   NotifyUser,
   BtnContainer,
   LogoutChoice,
+  PopupContainer,
+  MenuContent,
   Cancel,
 } from './StyledComponents'
+
+const menuOptionsList = [
+  {id: 1, text: 'Home'},
+  {id: 2, text: 'Trending'},
+  {id: 3, text: 'Gaming'},
+  {id: 4, text: 'Saved videos'},
+]
 
 const Header = props => (
   <Context.Consumer>
     {value => {
-      const {isDarkTheme, changeTheme, openOrHideMenu} = value
+      const {isDarkTheme, changeTheme, activeTab} = value
       const {history} = props
       const changingTheme = () => {
         changeTheme()
@@ -34,10 +44,6 @@ const Header = props => (
       const onLogOut = () => {
         Cookies.remove('jwt_token')
         history.replace('/login')
-      }
-
-      const onHamburger = () => {
-        openOrHideMenu()
       }
 
       return (
@@ -61,16 +67,37 @@ const Header = props => (
                   <FaMoon />
                 )}
               </IconButton>
-              <IconButton1 onClick={onHamburger}>
-                <GiHamburgerMenu
-                  fill={isDarkTheme ? 'white' : 'currentColor'}
-                />
-              </IconButton1>
+              <PopupContainer>
+                <Popup
+                  modal
+                  trigger={
+                    <IconButton1>
+                      <GiHamburgerMenu
+                        fill={isDarkTheme ? 'white' : 'currentColor'}
+                      />
+                    </IconButton1>
+                  }
+                >
+                  <>
+                    <MenuContent bgColor={isDarkTheme ? '#181818' : '#ffffff'}>
+                      {menuOptionsList.map(e => (
+                        <TabOption
+                          key={e.id}
+                          data={e}
+                          liveActiveTab={activeTab}
+                        />
+                      ))}
+                      <FooterSection />
+                    </MenuContent>
+                  </>
+                </Popup>
+              </PopupContainer>
+
               <ProfileImg
                 src="https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png"
                 alt="profile"
               />
-              <Alert>
+              <PopupContainer>
                 <Popup
                   modal
                   trigger={
@@ -99,9 +126,9 @@ const Header = props => (
                     </PopupContent>
                   )}
                 </Popup>
-              </Alert>
+              </PopupContainer>
 
-              <Alert>
+              <PopupContainer>
                 <Popup
                   modal
                   trigger={
@@ -132,7 +159,7 @@ const Header = props => (
                     </PopupContent>
                   )}
                 </Popup>
-              </Alert>
+              </PopupContainer>
             </NavItemsContainer>
           </Navbar>
         </>

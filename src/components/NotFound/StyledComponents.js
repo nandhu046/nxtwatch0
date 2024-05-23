@@ -31,8 +31,10 @@ export const ContentContainer = styled.div`
 
 export const NotFoundImg = styled.img`
   width: 100%;
+  height: 260px;
   @media screen and (min-width: 768px) {
-    width: 45%;
+    width: 280px;
+    height: 280px;
   }
 `
 

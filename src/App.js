@@ -16,7 +16,6 @@ import './App.css'
 class App extends Component {
   state = {
     isDarkTheme: false,
-    menu: false,
     activeTab: 1,
     savedVideos: [],
     likedVideos: [],
@@ -27,10 +26,6 @@ class App extends Component {
     this.setState(prevState => ({
       isDarkTheme: !prevState.isDarkTheme,
     }))
-  }
-
-  appMenu = () => {
-    this.setState(prevState => ({menu: !prevState.menu}))
   }
 
   onchangeActiveTab = id => {
@@ -72,7 +67,6 @@ class App extends Component {
   render() {
     const {
       isDarkTheme,
-      menu,
       activeTab,
       savedVideos,
       likedVideos,
@@ -83,8 +77,6 @@ class App extends Component {
         value={{
           isDarkTheme,
           changeTheme: this.updateTheme,
-          menu,
-          openOrHideMenu: this.appMenu,
           activeTab,
           changeActiveTab: this.onchangeActiveTab,
           savedVideos,
